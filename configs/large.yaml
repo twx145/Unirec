@@ -1,0 +1,46 @@
+name: large
+
+data:
+  data_dir: ./data
+  train_split: train
+  valid_split: valid
+  positive_action_types: [1]
+  sequence_names: [action_seq, content_seq, item_seq]
+  max_static_tokens: 128
+  max_float_dim: 64
+  max_seq_len: 128
+  max_event_features: 8
+  train_limit:
+  valid_limit:
+  test_limit:
+
+model:
+  hash_size: 4000007
+  feature_vocab_size: 16384
+  type_vocab_size: 16
+  seq_vocab_size: 16
+  d_model: 256
+  n_heads: 8
+  n_layers: 6
+  static_layers: 1
+  seq_layers: 2
+  num_queries: 16
+  memory_tokens: 16
+  head_hidden: 512
+  dropout: 0.10
+
+train:
+  seed: 2026
+  output_dir: ./outputs
+  batch_size: 48
+  eval_batch_size: 96
+  num_workers: 0
+  epochs: 5
+  lr: 0.0006
+  min_lr: 0.00003
+  warmup_steps: 300
+  weight_decay: 0.03
+  grad_clip: 1.0
+  use_amp: true
+  use_aux_contrastive: true
+  aux_weight: 0.05
