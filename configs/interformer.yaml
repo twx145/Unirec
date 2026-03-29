@@ -1,0 +1,42 @@
+name: interformer
+
+data:
+  data_dir: ./data
+  train_split: train
+  valid_split: valid
+  positive_action_types: [1]
+  sequence_names: [action_seq, content_seq, item_seq]
+  max_static_tokens: 128
+  max_float_dim: 64
+  max_seq_len: 128
+  max_event_features: 8
+  train_limit:
+  valid_limit:
+  test_limit:
+
+model:
+  model_class: InterFormer           # ← 指定模型类
+  hash_size: 4000007
+  feature_vocab_size: 16384
+  type_vocab_size: 16
+  seq_vocab_size: 16
+  d_model: 192                       # 和 base UniScaleFormer 对齐以做公平对比
+  n_heads: 6
+  n_layers: 4                        # 4 层双向交替
+  seq_layers: 1                      # 序列前处理层数
+  head_hidden: 384
+  dropout: 0.10
+
+train:
+  seed: 2026
+  output_dir: ./outputs
+  batch_size: 64
+  eval_batch_size: 128
+  num_workers: 0
+  epochs: 4
+  lr: 0.0008
+  min_lr: 0.00003
+  warmup_steps: 300
+  weight_decay: 0.02
+  grad_clip: 1.0
+  use_amp: true

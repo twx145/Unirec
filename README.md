@@ -12,7 +12,10 @@
 
 ```bash
 pip install -r requirements.txt
-python train.py --config configs/base.yaml
+python train.py --config configs/interformer.yaml
+python train.py --config configs/onetrans.yaml
+python train.py --config configs/hyformer.yaml
+python train.py --config configs/base.yaml  
 ```
 
 ## 评估
@@ -25,6 +28,12 @@ python evaluate.py --config configs/base.yaml --checkpoint outputs/base/best.pt
 
 ```bash
 python infer.py --config configs/base.yaml --checkpoint outputs/base/best.pt --split test --output outputs/base/test_predictions.csv
+```
+
+## 一键对比
+
+```bash
+bash compare_all.sh
 ```
 
 ## scaling law
